@@ -70,6 +70,7 @@
               </includes>
             </resource>
         </webResources>
+			</configuration>
 		</plugin>
 
  </plugins>
