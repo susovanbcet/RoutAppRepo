@@ -4,7 +4,7 @@
   	     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
 	                           http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.rout.webapp</groupId>
+  <groupId>RoutGroup</groupId>
   <artifactId>RoutWebApp1</artifactId>
   <packaging>war</packaging>
   <version>1.0</version>
@@ -61,13 +61,18 @@
     <configuration>
         <attachClasses>true</attachClasses>
         <webXml>WebContent/WEB-INF/web.xml</webXml>
+
         <webResources>
             <resource>
                 <directory>WebContent</directory>
-                <filtering>true</filtering>
+								<includes>
+                	<include>**/*.jsp</include>
+              </includes>
             </resource>
         </webResources>
-    </configuration>
+
+				<outputDirectory>/tmp/</outputDirectory>
+				<!-- <outputFileNameMapping> -->
 		</plugin>
 
  </plugins>
