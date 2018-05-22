@@ -70,9 +70,6 @@
               </includes>
             </resource>
         </webResources>
-
-				<outputDirectory>/tmp/</outputDirectory>
-	
 		</plugin>
 
  </plugins>
