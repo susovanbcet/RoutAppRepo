@@ -16,7 +16,7 @@ pipeline {
         stage ('Build') {
             steps {
                 sh '''
-                  cd HelloWorld/
+                  cd NigamTestApp1/
                   mvn -Dmaven.test.failure.ignore=true install
                 '''
             }           
