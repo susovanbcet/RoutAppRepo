@@ -1,15 +1,10 @@
-pipeline {
-  agent {
-    docker {
-      image 'maven:3.3.3'
+pipeline { 
+    agent any  
+    stages { 
+        stage('Build') { 
+            steps { 
+               echo 'This is a minimal pipeline.' 
+            }
+        }
     }
-
-  }
-  stages {
-    stage('build') {
-      steps {
-        sh 'mvn --version'
-      }
-    }
-  }
 }
