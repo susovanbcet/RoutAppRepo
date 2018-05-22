@@ -10,6 +10,7 @@ node {
         sh "git fetch origin pull/${params.ghprbPullId}/head:${pullRequestBranch}"
         sh "git checkout ${pullRequestBranch}"
         sh "git merge ${params.ghprbTargetBranch}"
+	sh "echo Hello World"
     }
 
     stage('build') {
