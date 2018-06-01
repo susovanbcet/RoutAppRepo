@@ -22,6 +22,9 @@ pipeline {
         sh 'curl -u admin:admin -X PUT \'http://localhost:8081/artifactory/libs-release-local/RoutWebApp1.war\' -T NigamTestApp1/target/RoutWebApp1.war'
       }
     }
+    stage('Artifact Promotion') {
+      sh 'echo "Artifact to be promoted"'
+    }
   }
   tools {
     maven 'maven_3.5.3'
