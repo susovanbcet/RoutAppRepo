@@ -25,6 +25,7 @@ pipeline {
     stage('Artifact Promotion') {
       sh 'echo "Artifact to be promoted"'
       sh 'echo Some test cases'
+      sh 'echo "Some more test cases"'
     }
   }
   tools {
