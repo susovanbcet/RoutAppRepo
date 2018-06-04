@@ -45,7 +45,7 @@ pipeline {
         sh 'echo "Artifact to be promoted"'
         sh 'echo Some test cases'
         sh 'echo "Some more test cases"'
-        scripts {
+        script {
           server.promote promotionConfig
         }
       }
