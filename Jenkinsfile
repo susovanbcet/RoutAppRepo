@@ -1,3 +1,6 @@
+import jenkins.model.*
+jenkins = Jenkins.instance
+
 def server = Artifactory.newServer url: 'http://localhost:8081/', username: 'admin', password: 'admin'
 def promotionConfig = [
             // Mandatory parameters
