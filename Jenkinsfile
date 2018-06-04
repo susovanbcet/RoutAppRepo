@@ -1,5 +1,8 @@
-import jenkins.model.*
-jenkins = Jenkins.instance
+import hudson.slaves.EnvironmentVariablesNodeProperty
+import hudson.EnvVars
+
+EnvironmentVariablesNodeProperty prop = jenkins.getGlobalNodeProperties().get(EnvironmentVariablesNodeProperty.class)
+EnvVars env = prop.getEnvVars()
 
 def server = Artifactory.newServer url: 'http://localhost:8081/', username: 'admin', password: 'admin'
 def promotionConfig = [
