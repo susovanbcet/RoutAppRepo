@@ -1,3 +1,21 @@
+def server = Artifactory.newServer url: 'http://localhost:8081/', username: 'admin', password: 'admin'
+def promotionConfig = [
+            // Mandatory parameters
+            'buildName'          : buildInfo.name,
+            'buildNumber'        : buildInfo.number,
+            'targetRepo'         : ' 	libs-release-local',
+         
+            // Optional parameters
+            'comment'            : 'this is the promotion comment',
+            'sourceRepo'         : 'libs-release-local',
+            'status'             : 'Released',
+            'includeDependencies': true,
+            'copy'               : true,
+            // 'failFast' is true by default.
+            // Set it to false, if you don't want the promotion to abort upon receiving the first error.
+            'failFast'           : true
+        ]
+
 pipeline {
   agent any
   stages {
@@ -27,6 +45,7 @@ pipeline {
         sh 'echo "Artifact to be promoted"'
         sh 'echo Some test cases'
         sh 'echo "Some more test cases"'
+        server.promote promotionConfig
       }
     }
   }
