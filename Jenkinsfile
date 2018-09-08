@@ -9,7 +9,7 @@ def promotionConfig = [
             // Mandatory parameters
             'buildName'          : buildInfo.name,
             'buildNumber'        : buildInfo.number,
-            'targetRepo'         : ' 	libs-release-local',
+            'targetRepo'         : 'libs-release-local',
          
             // Optional parameters
             'comment'            : 'this is the promotion comment',
@@ -28,17 +28,17 @@ pipeline {
     stage('Initialize') {
       steps {
         sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                '''
+           echo "PATH = ${PATH}"
+           echo "M2_HOME = ${M2_HOME}"
+        '''
       }
     }
     stage('Build') {
       steps {
         sh '''
-                  cd NigamTestApp1/
-                  mvn -Dmaven.test.failure.ignore=true install
-                '''
+           cd NigamTestApp1/
+           mvn -Dmaven.test.failure.ignore=true install
+        '''
       }
     }
     stage('Upload to Artifactory') {
@@ -58,6 +58,6 @@ pipeline {
     }
   }
   tools {
-    maven 'maven_3.5.3'
+    maven 'Maven_3.5.4'
   }
 }
