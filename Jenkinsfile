@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Initialize') {
       steps {
-        sh '''
+        bat '''
            echo "PATH = ${PATH}"
            echo "M2_HOME = ${M2_HOME}"
         '''
@@ -11,7 +11,7 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh '''
+        bat '''
            cd NigamTestApp1/
            mvn -Dmaven.test.failure.ignore=true install
         '''
@@ -19,14 +19,15 @@ pipeline {
     }
     stage('Upload to Artifactory') {
       steps {
-        sh 'curl -u admin:admin -X PUT \'http://localhost:9091/repository/maven-snapshot/RoutWebApp1.war\' -T NigamTestApp1/target/RoutWebApp1.war'
+        bat 'echo Upload to Artifactory'
+        //sh 'curl -u admin:admin -X PUT \'http://localhost:9091/repository/maven-snapshot/RoutWebApp1.war\' -T NigamTestApp1/target/RoutWebApp1.war'
       }
     }
     stage('Artifact Promotion') {
       steps {
-        sh 'echo "Artifact to be promoted"'
-        sh 'echo Some test cases'
-        sh 'echo "Some more test cases"'
+        bat 'echo "Artifact to be promoted"'
+        bat 'echo Some test cases'
+        bat 'echo "Some more test cases"'
 //        script {
 //          server.promote promotionConfig
  //       }
