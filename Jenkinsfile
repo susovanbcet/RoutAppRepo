@@ -1,11 +1,3 @@
-import hudson.slaves.EnvironmentVariablesNodeProperty
-import hudson.EnvVars
-
-EnvironmentVariablesNodeProperty prop = jenkins.getGlobalNodeProperties().get(EnvironmentVariablesNodeProperty.class)
-EnvVars env = prop.getEnvVars()
-
-def server = Artifactory.newServer url: 'http://localhost:8081/', username: 'admin', password: 'admin'
-
 pipeline {
   agent any
   stages {
@@ -27,7 +19,7 @@ pipeline {
     }
     stage('Upload to Artifactory') {
       steps {
-        sh 'curl -u admin:admin -X PUT \'http://localhost:8081/artifactory/libs-release-local/RoutWebApp1.war\' -T NigamTestApp1/target/RoutWebApp1.war'
+        sh 'curl -u admin:admin -X PUT \'http://localhost:9091/repository/maven-snapshot/RoutWebApp1.war\' -T NigamTestApp1/target/RoutWebApp1.war'
       }
     }
     stage('Artifact Promotion') {
