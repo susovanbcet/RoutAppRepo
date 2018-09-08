@@ -20,7 +20,8 @@ pipeline {
     stage('Upload to Artifactory') {
       steps {
         bat 'echo Upload to Artifactory'
-        nexusArtifactUploader credentialsId: 'nexus_admin', groupId: 'gov.ohio.jfs', nexusUrl: 'localhost:9091', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshot', version: 'v1'
+        // nexusArtifactUploader credentialsId: 'nexus_admin', groupId: 'gov.ohio.jfs', nexusUrl: 'localhost:9091', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshot', version: 'v1'
+        nexusArtifactUploader artifacts: [[artifactId: 'mattermost-probe', classifier: '', file: 'mattermost-probe', type: 'bin']], credentialsId: 'nexus-deploy', groupId: 'gov.ohio.jfs', nexusUrl: 'localhost:9091', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-releases', version: version
         //sh 'curl -u admin:admin -X PUT \'http://localhost:9091/repository/maven-snapshot/RoutWebApp1.war\' -T NigamTestApp1/target/RoutWebApp1.war'
       }
     }
