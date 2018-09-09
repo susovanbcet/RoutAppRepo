@@ -9,7 +9,16 @@ pipeline {
         '''
       }
     }
-    stage('Build') {
+    
+    stage ('CI:CodeScan') {
+      steps {
+        bat '''
+          echo " This is CI:CodeScan-Step2" 
+        '''
+      }
+    } 
+    
+    stage('CI:CodeBuild') {
       steps {
         bat '''
            cd NigamTestApp1/
@@ -17,7 +26,7 @@ pipeline {
         '''
       }
     }
-    stage('Upload to Artifactory') {
+    stage('CI:ArtifactPush') {
       steps {
         bat 'echo Upload to Artifactory'
         // nexusArtifactUploader credentialsId: 'nexus_admin', groupId: 'gov.ohio.jfs', nexusUrl: 'localhost:9091', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshot', version: 'v1'
@@ -25,17 +34,21 @@ pipeline {
         //sh 'curl -u admin:admin -X PUT \'http://localhost:9091/repository/maven-snapshot/RoutWebApp1.war\' -T NigamTestApp1/target/RoutWebApp1.war'
       }
     }
-    stage('Artifact Promotion') {
+    stage('CI-ArtifactPromo') {
       steps {
         bat 'echo "Artifact to be promoted"'
-        bat 'echo Some test cases'
-        bat 'echo "Some more test cases"'
 //        script {
 //          server.promote promotionConfig
- //       }
-      }
+//        }
+       }
     }
+
+    stage('CI:Notify-CI') {steps {bat 'echo "This is CI:Notify-CI-Step5"'}}
+    stage('CD:PreDeploy') {steps {bat 'echo "This is CD:PreDeploy-Step5"'}}
+    stage('CD:Deploy') {steps {bat 'echo "This is CD:Deploy Step5"'}}   
+    stage('CD:Notify-CD') {steps {bat 'echo "This is CD:Notify-CD -Step5"'}}    
   }
+  
   tools {
     maven 'Maven_3.5.4'
   }
