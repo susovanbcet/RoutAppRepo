@@ -34,7 +34,7 @@ pipeline {
         //sh 'curl -u admin:admin -X PUT \'http://localhost:9091/repository/maven-snapshot/RoutWebApp1.war\' -T NigamTestApp1/target/RoutWebApp1.war'
       }
     }
-    stage('CI-ArtifactPromo') {
+    stage('CI:ArtifactPromo') {
       steps {
         bat 'echo "Artifact to be promoted"'
 //        script {
