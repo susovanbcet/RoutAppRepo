@@ -43,10 +43,10 @@ pipeline {
        }
     }
 
-    stage('CI:Notify-CI') {steps {bat 'echo "This is CI:Notify-CI-Step5"'}}
-    stage('CD:PreDeploy') {steps {bat 'echo "This is CD:PreDeploy-Step5"'}}
-    stage('CD:Deploy') {steps {bat 'echo "This is CD:Deploy Step5"'}}   
-    stage('CD:Notify-CD') {steps {bat 'echo "This is CD:Notify-CD -Step5"'}}    
+//    stage('CI:Notify-CI') {steps {bat 'echo "This is CI:Notify-CI-Step5"'}}
+//    stage('CD:PreDeploy') {steps {bat 'echo "This is CD:PreDeploy-Step5"'}}
+//    stage('CD:Deploy') {steps {bat 'echo "This is CD:Deploy Step5"'}}   
+//    stage('CD:Notify-CD') {steps {bat 'echo "This is CD:Notify-CD -Step5"'}}    
   }
   
   tools {
