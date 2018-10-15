@@ -7,11 +7,15 @@
     <artifactId>gs-maven</artifactId>
     <packaging>jar</packaging>
     <version>0.1.0</version>
-
+<!--
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
+            </properties>
+--> 
+    <properties>
+		<jdk.version>1.8</jdk.version>
+</properties>
 
     <build>
         <plugins>
